@@ -10,10 +10,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Hello World App'),
+          title: Text('Task manager app'),
+          backgroundColor: Color(0xFF42A5F5),
         ),
         body: Center(
-          child: Text('Hello World'),
+          child: Text('This project for manager app'),
         ),
       ),
     );
