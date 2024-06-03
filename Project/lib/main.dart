@@ -12,10 +12,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  final List<Widget> _widgetOptions = <Widget>[
     Text('Home Page'),
     Text('Search Page'),
-    Text('Profile Page'),
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -54,6 +54,69 @@ class _MyAppState extends State<MyApp> {
           selectedItemColor: Colors.amber[800],
           onTap: _onItemTapped,
         ),
+      ),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ProgressCard(),
+    );
+  }
+}
+
+class ProgressCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Color(0xFF004B79),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Row(
+        children: <Widget>[
+          CircleAvatar(
+            radius: 40.0,
+            backgroundColor: Colors.white,
+            child: Icon(Icons.person, size: 50.0, color: Colors.grey),
+          ),
+          SizedBox(width: 16.0),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  children: [
+                    Icon(Icons.emoji_events, color: Colors.yellow),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: LinearProgressIndicator(
+                          value: 0.5,
+                          backgroundColor: Colors.white,
+                          color: Colors.pink,
+                          minHeight: 10.0,
+                        ),
+                      ),
+                    ),
+                    Icon(Icons.emoji_events_outlined, color: Colors.yellow),
+                  ],
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'XP +500',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
