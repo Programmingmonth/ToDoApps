@@ -13,8 +13,8 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page'),
-    Text('Search Page'),
+    Text('Home'),
+    Text('Search'),
     ProfilePage(),
   ];
 
@@ -76,7 +76,7 @@ class ProgressCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Color(0xFF004B79),
+        color: Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Row(
@@ -99,7 +99,7 @@ class ProgressCard extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: LinearProgressIndicator(
                           value: 0.5,
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.purple,
                           color: Colors.pink,
                           minHeight: 10.0,
                         ),
