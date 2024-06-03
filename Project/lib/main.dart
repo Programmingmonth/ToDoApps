@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Hello World App'),
+          title: Text('Task manager app'),
           backgroundColor: Colors.blue,
         ),
         body: Center(
