@@ -5,4 +5,4 @@ This Project for flutter and ios, android, mac, linux, windows.
 
 1. Files `git clone https://github.com/Programmingmonth/ToDo.git`
 2. The running of project `cd ToDo`
- 
+```flutter run```
