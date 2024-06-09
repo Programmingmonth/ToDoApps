@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _widgetOptions = <Widget>[
     Text('Home'),
     Text('Search'),
-    ProfilePage(),
+    ProfilePage('Profiles'),
   ];
 
   void _onItemTapped(int index) {
@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Profiles',
             ),
           ],
           currentIndex: _selectedIndex,
