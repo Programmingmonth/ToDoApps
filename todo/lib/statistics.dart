@@ -6,6 +6,8 @@ class StatisticsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Statistics'),
+        backgroundColor: Colors.pinkAccent,
+        shadowColor: Colors.purple,
       ),
       body: Center(
         child: Text('Statistics Page'),

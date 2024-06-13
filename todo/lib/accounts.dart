@@ -6,6 +6,8 @@ class AccountsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Accounts'),
+        backgroundColor: Colors.pinkAccent,
+        shadowColor: Colors.purple,
       ),
       body: Center(
         child: Text('Accounts Page'),
