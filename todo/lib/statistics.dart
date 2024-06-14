@@ -5,8 +5,12 @@ class StatisticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Statistics'),
+        title: Text(
+          'Statistics',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.pinkAccent,
+        centerTitle: true,
         shadowColor: Colors.purple,
       ),
       body: Center(
