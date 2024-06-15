@@ -1,0 +1,14 @@
+{
+    "ToDo Project For Flutter": {
+      "NEEDS": [
+        "can be used",
+        "Act very quickly",
+        "And it can be read on Mac Windows and Linux Android Evas"
+      ],
+      "DATABASES": [
+        "If a task is created in the program, it should be written quickly in the terminal",
+        "Connect to MySql (DATABASE)"
+      ]
+    }
+  }
+  
