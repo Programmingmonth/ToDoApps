@@ -1,16 +1,18 @@
-"This Files for Planning"
-
 {
-    "ToDo Project For Flutter": {
-      "NEEDS": [
-        "can be used",
-        "Act very quickly",
-        "And it can be read on Mac Windows and Linux Android Evas"
-      ],
-      "DATABASES": [
-        "If a task is created in the program, it should be written quickly in the terminal",
-        "Connect to MySql (DATABASE)"
-      ]
-    }
+  "description": "This file is for planning",
+  "ToDo Project For Flutter": {
+    "NEEDS": [
+      "Can be used",
+      "Act very quickly",
+      "Can be read on Mac, Windows, Linux, Android, and iOS"
+    ],
+    "DATABASES": [
+      "If a task is created in the program, it should be written quickly in the terminal",
+      "Connect to MySQL (database)"
+    ],
+    "GITHUB": [
+      "The README should be good and interesting",
+      "The project is open source"
+    ]
   }
-  
+}
