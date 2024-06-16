@@ -5,12 +5,19 @@ class TimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20),
-      margin: EdgeInsets.only(top: 50),
-      width: 300,
+      margin: EdgeInsets.symmetric(horizontal: 20), // Adjust the horizontal margin
+      width: double.infinity,
       height: 150,
       decoration: BoxDecoration(
-        color: Color(0xFF4B4453),
+        color: Color(0xFF4B4453), // Darker purple color
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x80D0C1E1), // Violet color with 50% transparency
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
       ),
       child: Stack(
         children: [
