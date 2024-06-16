@@ -1,8 +1,7 @@
 The files Important:
 ------------------------------------------
 lib:
+ - screens
+ - widgets
  - main.dart
- - accounts.dart
- - home.dart
- - statistics.dart
 ------------------------------------------

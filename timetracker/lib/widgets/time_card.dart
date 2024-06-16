@@ -22,8 +22,8 @@ class TimeCard extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 10,
-            left: 10,
+            top: 1, // Toping
+            right: 1, // Righting
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.greenAccent,
