@@ -5,7 +5,7 @@ The files Important:
 |  - screens:	                         |
 | 	- home_screens.dart              |
 |  - widgets:                            |
-| 	- bottom_navbar.dart            |
+| 	- bottom_navbar.dart             |
 |       - time_card.dart                    |
 |  - main.dart                           |
 ------------------------------------------
