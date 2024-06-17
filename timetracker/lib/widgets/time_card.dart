@@ -80,7 +80,7 @@ class TimeCard extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'Name Work: $work',
+                  'Work: $work',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 16,
