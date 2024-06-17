@@ -6,6 +6,6 @@ The files Important:
 | 	- home_screens.dart              |
 |  - widgets:                            |
 | 	- bottom_navbar.dart             |
-|       - time_card.dart                    |
+|       - time_card.dart                 |
 |  - main.dart                           |
 ------------------------------------------
