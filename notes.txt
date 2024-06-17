@@ -5,6 +5,6 @@ lib:                                     |
  - screens:								                      |
  	- home_screens.dart                    |
  - widgets:                              |
- 	- bottom_navbar.dart                   |
+ 	- bottom_navbar.dart             |
  - main.dart                             |
 ------------------------------------------
