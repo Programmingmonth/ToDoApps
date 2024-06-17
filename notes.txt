@@ -2,7 +2,7 @@ The files Important:
 ------------------------------------------
 lib:                                     |
  - screens:								                      |
- 	- home_screens.dart                    |
+ 	- home_screens.dart              |
  - widgets:                              |
  	- bottom_navbar.dart                   |
  - main.dart                             |
