@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TimeCard extends StatelessWidget {
+class TimeCard extends StatefulWidget {
   final String title;
   final String time;
   final String name;
@@ -13,6 +13,19 @@ class TimeCard extends StatelessWidget {
     required this.name,
     required this.work,
   }) : super(key: key);
+
+  @override
+  _TimeCardState createState() => _TimeCardState();
+}
+
+class _TimeCardState extends State<TimeCard> {
+  bool isStarted = false;
+
+  void toggleStartPause() {
+    setState(() {
+      isStarted = !isStarted;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +60,7 @@ class TimeCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    widget.title,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
@@ -55,7 +68,7 @@ class TimeCard extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'Time: $time',
+                    'Time: ${widget.time}',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
@@ -72,7 +85,7 @@ class TimeCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Name: $name',
+                  'Name: ${widget.name}',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 16,
@@ -80,7 +93,7 @@ class TimeCard extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'Work: $work',
+                  'Name Work: ${widget.work}',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 16,
@@ -95,9 +108,9 @@ class TimeCard extends StatelessWidget {
             child: Row(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: toggleStartPause,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF0099FF),
+                    backgroundColor: isStarted ? Colors.grey : Color(0xFF0099FF),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -109,15 +122,18 @@ class TimeCard extends StatelessWidget {
                     children: [
                       Icon(Icons.play_arrow, size: 20),
                       SizedBox(height: 5),
-                      Text('Start', style: TextStyle(fontSize: 10)),
+                      Text(
+                        'Start',
+                        style: TextStyle(fontSize: 10),
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: toggleStartPause,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFFFC107),
+                    backgroundColor: isStarted ? Color(0xFFFFC107) : Colors.grey,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -129,7 +145,10 @@ class TimeCard extends StatelessWidget {
                     children: [
                       Icon(Icons.pause, size: 20),
                       SizedBox(height: 5),
-                      Text('Pause', style: TextStyle(fontSize: 10)),
+                      Text(
+                        'Pause',
+                        style: TextStyle(fontSize: 10),
+                      ),
                     ],
                   ),
                 ),
