@@ -39,7 +39,6 @@ class _TimeCardState extends State<TimeCard> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Color(0x80D0C1E1),
             blurRadius: 10,
             offset: Offset(0, 5),
           ),

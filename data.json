@@ -1,14 +1,14 @@
 {
-  "DESCRIPTION": "This file is for planning",
+  "description": "This file is for planning",
   "ToDo Project For Flutter": {
     "NEEDS": [
       "Can be used",
       "Act very quickly",
       "Can be read on Mac, Windows, Linux, Android, and iOS"
     ],
-    "DATABASES (But it has not been built yet)": [
+    "DATABASES": [
       "If a task is created in the program, it should be written quickly in the terminal",
-      "Connected DATABASES"
+      "Connect to Database"
     ],
     "GITHUB": [
       "The README should be good and interesting",
