@@ -8,11 +8,11 @@
     ],
     "DATABASES": [
       "If a task is created in the program, it should be written quickly in the terminal",
-      "Connect to Database"
+      "Connect to DATABASES"
     ],
     "GITHUB": [
       "The README should be good and interesting",
-      "The project is open source"
+      "The project is (open source)"
     ]
   }
 }
