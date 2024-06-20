@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class TimeCard extends StatefulWidget {
   final String title;
-  final String time;
   final String name;
   final String work;
 
   const TimeCard({
     Key? key,
     required this.title,
-    required this.time,
     required this.name,
     required this.work,
   }) : super(key: key);
@@ -20,11 +19,30 @@ class TimeCard extends StatefulWidget {
 
 class _TimeCardState extends State<TimeCard> {
   bool isStarted = false;
+  Duration duration = Duration();
+  Timer? timer;
 
   void toggleStartPause() {
     setState(() {
+      if (isStarted) {
+        timer?.cancel();
+      } else {
+        timer = Timer.periodic(Duration(seconds: 1), (_) {
+          setState(() {
+            duration += Duration(seconds: 1);
+          });
+        });
+      }
       isStarted = !isStarted;
     });
+  }
+
+  String twoDigits(int n) => n.toString().padLeft(2, '0');
+  String formatDuration(Duration d) {
+    final hours = twoDigits(d.inHours);
+    final minutes = twoDigits(d.inMinutes.remainder(60));
+    final seconds = twoDigits(d.inSeconds.remainder(60));
+    return '$hours:$minutes:$seconds';
   }
 
   @override
@@ -67,7 +85,7 @@ class _TimeCardState extends State<TimeCard> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'Time: ${widget.time}',
+                    'Time: ${formatDuration(duration)}',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,

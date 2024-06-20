@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
-class NewTaskScreen extends StatelessWidget {
+class NewTaskScreen extends StatefulWidget {
+  @override
+  _NewTaskScreenState createState() => _NewTaskScreenState();
+}
+
+class _NewTaskScreenState extends State<NewTaskScreen> {
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _workController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +31,29 @@ class NewTaskScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               TextField(
+                controller: _titleController,
                 decoration: InputDecoration(
-                  labelText: 'Name Task:',
-                  hintText: 'Typing...',
+                  labelText: 'Task Title',
+                  hintText: 'Enter task title...',
                   border: OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.check, color: Colors.green),
-                    onPressed: () {
-                      // Add task logic
-                    },
-                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  hintText: 'Enter name...',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                controller: _workController,
+                decoration: InputDecoration(
+                  labelText: 'Work',
+                  hintText: 'Enter work...',
+                  border: OutlineInputBorder(),
                 ),
               ),
               SizedBox(height: 20),
@@ -49,7 +71,11 @@ class NewTaskScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Add task logic
+                      Navigator.pop(context, {
+                        'title': _titleController.text,
+                        'name': _nameController.text,
+                        'work': _workController.text,
+                      });
                     },
                     child: Text('Next'),
                     style: ElevatedButton.styleFrom(

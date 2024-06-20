@@ -3,7 +3,23 @@ import '../widgets/bottom_navbar.dart';
 import '../widgets/time_card.dart';
 import 'new_task_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Map<String, String>> tasks = [
+    {'title': 'Programming', 'name': 'Programming', 'work': 'Flutter'},
+    {'title': 'Designer', 'name': 'Designer', 'work': 'Designer'},
+  ];
+
+  void addTask(String title, String name, String work) {
+    setState(() {
+      tasks.add({'title': title, 'name': name, 'work': work});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,25 +28,18 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 20),
-            TimeCard(
-              title: 'Programming',
-              time: '2h 55m 6s',
-              name: 'Programming',
-              work: 'Flutter',
-            ),
-            TimeCard(
-              title: 'Designer',
-              time: '1h 25m 1s',
-              name: 'Designer',
-              work: 'Designer',
-            ),
+            ...tasks.map((task) => TimeCard(
+              title: task['title']!,
+              name: task['name']!,
+              work: task['work']!,
+            )).toList(),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final newTask = await Navigator.push(
             context,
             PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) => NewTaskScreen(),
@@ -49,6 +58,9 @@ class HomeScreen extends StatelessWidget {
               },
             ),
           );
+          if (newTask != null) {
+            addTask(newTask['title'], newTask['name'], newTask['work']);
+          }
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.pink[200],
