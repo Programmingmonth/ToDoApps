@@ -1,184 +1,288 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class StatisticsScreen extends StatefulWidget {
-  @override
-  _StatisticsScreenState createState() => _StatisticsScreenState();
-}
-
-class _StatisticsScreenState extends State<StatisticsScreen> {
+class StatisticsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF110022),
       appBar: AppBar(
-        backgroundColor: Color(0xFF110022),
+        title: Text('Statistics'),
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      ),
+      backgroundColor: Color(0xFF110022),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildPeriodButton('Daily'),
-            _buildPeriodButton('Weekly'),
-            _buildPeriodButton('Monthly'),
-            _buildPeriodButton('Yearly'),
-          ],
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(height: 20),
-          _buildLegend(),
-          SizedBox(height: 20),
-          _buildPieChart(),
-          SizedBox(height: 20),
-          _buildBarChart(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPeriodButton(String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: TextButton(
-        onPressed: () {},
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLegend() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildLegendItem(Color(0xFF0099FF), 'Low'),
-        _buildLegendItem(Color(0xFFFFC0CB), 'Much'),
-        _buildLegendItem(Color(0xFF00FFCC), 'Very Much'),
-      ],
-    );
-  }
-
-  Widget _buildLegendItem(Color color, String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: Row(
-        children: [
-          Container(
-            width: 16,
-            height: 16,
-            color: color,
-          ),
-          SizedBox(width: 4),
-          Text(text, style: TextStyle(color: Colors.white)),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPieChart() {
-    return Container(
-      height: 200,
-      child: PieChart(
-        PieChartData(
-          sections: [
-            PieChartSectionData(
-              color: Color(0xFF0099FF),
-              value: 30,
-              title: '',
+            // Top Buttons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Daily', style: TextStyle(color: Colors.white)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF2C2B3B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Weekly', style: TextStyle(color: Colors.white)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF2C2B3B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Monthly', style: TextStyle(color: Colors.white)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF2C2B3B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Yearly', style: TextStyle(color: Colors.white)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF2C2B3B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            PieChartSectionData(
-              color: Color(0xFFFFC0CB),
-              value: 40,
-              title: '',
-            ),
-            PieChartSectionData(
-              color: Color(0xFF00FFCC),
-              value: 30,
-              title: '',
-            ),
-          ],
-          borderData: FlBorderData(show: false),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBarChart() {
-    return Container(
-      height: 200,
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: BarChart(
-        BarChartData(
-          barGroups: [
-            _buildBarGroup(0, 5, 10, 15),
-            _buildBarGroup(1, 6, 11, 17),
-            _buildBarGroup(2, 7, 12, 20),
-            _buildBarGroup(3, 8, 14, 22),
-            _buildBarGroup(4, 5, 13, 18),
-            _buildBarGroup(5, 7, 16, 23),
-            _buildBarGroup(6, 6, 15, 21),
-          ],
-          borderData: FlBorderData(show: false),
-          titlesData: FlTitlesData(
-            bottomTitles: SideTitles(
-              showTitles: true,
-              getTextStyles: (context, value) => const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
+            SizedBox(height: 20),
+            // Bar Chart
+            Container(
+              height: 300,  // Specify the height you want here
+              child: BarChart(
+                BarChartData(
+                  alignment: BarChartAlignment.spaceAround,
+                  maxY: 10,
+                  barTouchData: BarTouchData(
+                    touchTooltipData: BarTouchTooltipData(
+                      tooltipBgColor: Colors.grey,
+                      getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                        String weekDay;
+                        switch (group.x.toInt()) {
+                          case 0:
+                            weekDay = 'Monday';
+                            break;
+                          case 1:
+                            weekDay = 'Tuesday';
+                            break;
+                          case 2:
+                            weekDay = 'Wednesday';
+                            break;
+                          case 3:
+                            weekDay = 'Thursday';
+                            break;
+                          case 4:
+                            weekDay = 'Friday';
+                            break;
+                          case 5:
+                            weekDay = 'Saturday';
+                            break;
+                          case 6:
+                            weekDay = 'Sunday';
+                            break;
+                          default:
+                            throw Error();
+                        }
+                        return BarTooltipItem(
+                          weekDay + '\n',
+                          TextStyle(
+                            color: Colors.yellow,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: (rod.y).toString(),
+                              style: TextStyle(
+                                color: Colors.yellow,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    touchCallback: (FlTouchEvent event, barTouchResponse) {},
+                  ),
+                  titlesData: FlTitlesData(
+                    show: true,
+                    bottomTitles: SideTitles(
+                      showTitles: true,
+                      getTitles: (double value) {
+                        switch (value.toInt()) {
+                          case 0:
+                            return 'M';
+                          case 1:
+                            return 'T';
+                          case 2:
+                            return 'W';
+                          case 3:
+                            return 'T';
+                          case 4:
+                            return 'F';
+                          case 5:
+                            return 'S';
+                          case 6:
+                            return 'S';
+                          default:
+                            return '';
+                        }
+                      },
+                      getTextStyles: (context, value) => const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                    leftTitles: SideTitles(
+                      showTitles: false,
+                    ),
+                    topTitles: SideTitles(
+                      showTitles: false,
+                    ),
+                    rightTitles: SideTitles(
+                      showTitles: false,
+                    ),
+                  ),
+                  borderData: FlBorderData(
+                    show: false,
+                  ),
+                  barGroups: [
+                    BarChartGroupData(
+                      x: 0,
+                      barRods: [
+                        BarChartRodData(
+                          y: 8,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                    BarChartGroupData(
+                      x: 1,
+                      barRods: [
+                        BarChartRodData(
+                          y: 6.5,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                    BarChartGroupData(
+                      x: 2,
+                      barRods: [
+                        BarChartRodData(
+                          y: 5,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                    BarChartGroupData(
+                      x: 3,
+                      barRods: [
+                        BarChartRodData(
+                          y: 7.5,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                    BarChartGroupData(
+                      x: 4,
+                      barRods: [
+                        BarChartRodData(
+                          y: 9,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                    BarChartGroupData(
+                      x: 5,
+                      barRods: [
+                        BarChartRodData(
+                          y: 4.5,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                    BarChartGroupData(
+                      x: 6,
+                      barRods: [
+                        BarChartRodData(
+                          y: 6,
+                          colors: [Colors.yellow],
+                          width: 22,
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            y: 10,
+                            colors: [Colors.white],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              margin: 16,
-              getTitles: (double value) {
-                switch (value.toInt()) {
-                  case 0:
-                    return 'Sun';
-                  case 1:
-                    return 'Mon';
-                  case 2:
-                    return 'Tue';
-                  case 3:
-                    return 'Wed';
-                  case 4:
-                    return 'Thu';
-                  case 5:
-                    return 'Fri';
-                  case 6:
-                    return 'Sat';
-                  default:
-                    return '';
-                }
-              },
             ),
-            leftTitles: SideTitles(showTitles: false),
-          ),
+          ],
         ),
       ),
     );
   }
+}
 
-  BarChartGroupData _buildBarGroup(int x, double y1, double y2, double y3) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          y: y1,
-          colors: [Color(0xFF0099FF)],
-        ),
-        BarChartRodData(
-          y: y2,
-          colors: [Color(0xFFFFC0CB)],
-        ),
-        BarChartRodData(
-          y: y3,
-          colors: [Color(0xFF00FFCC)],
-        ),
-      ],
-      showingTooltipIndicators: [0, 1, 2],
-    );
-  }
+void main() {
+  runApp(MaterialApp(
+    home: StatisticsScreen(),
+  ));
 }
